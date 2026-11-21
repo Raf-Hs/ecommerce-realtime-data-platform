@@ -14,12 +14,12 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | Kafka infrastructure | In progress | Docker Compose running; 6 topics created; smoke tests passed |
 | Event validation | In progress | src/validation/event_validator.py with 4 passing tests |
 | Spark streaming | In progress | Spark 4.2 + Delta + Kafka connector validated via smoke test |
-| Data Lakehouse (Delta) | Designed | `docs/architecture/ARCHITECTURE.md`, ADR-007 |
+| Data Lakehouse (Delta) | In progress | Spark + Delta validated; Gold aggregation implemented |
 | Azure architecture | Designed (not implemented) | `docs/architecture/ARCHITECTURE.md` |
 | Monitoring | Not started | — |
 | Documentation | In progress | Multiple docs; visuals pending |
 | Visual assets | In progress | Mermaid diagrams in architecture doc |
-| Testing | In progress | 21 tests passing (unit + integration) |
+| Testing | In progress | 23 tests passing (unit + integration) |
 | Reliability | Designed | ADR-009, ADR-008 |
 | Project tracking | Complete | This document |
 
@@ -32,6 +32,6 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | 2 — Multi-Source Ingestion | In progress |
 | 3 — Kafka & Event Reliability | In progress |
 | 4 — Spark Structured Streaming | In progress |
-| 5 — Data Lake & Business Outputs | Not started |
+| 5 — Data Lake & Business Outputs | In progress | Gold product engagement aggregation + Postgres serving |
 | 6 — Reliability & Performance | Not started |
 | 7 — Portfolio Delivery | Not started |
