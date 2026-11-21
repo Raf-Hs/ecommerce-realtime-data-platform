@@ -36,12 +36,10 @@ def ensure_topic() -> None:
 
 def produce() -> str:
     payload = {"smoke_id": str(uuid.uuid4()), "message": "hello novacart", "ts": time.time()}
-    producer = KafkaProducer(
-        bootstrap_servers=BOOTSTRAP,
-        value_serializer=lambda v: json.dumps(v).encode("utf-8"),
-        key_serializer=lambda k: k.encode("utf-8") if k else None,
+    producer = KafkaProducer(bootstrap_servers=BOOTSTRAP)
+    future = producer.send(
+        TOPIC, key=b"smoke", value=json.dumps(payload).encode("utf-8")
     )
-    future = producer.send(TOPIC, key="smoke", value=payload)
     future.get(timeout=10)
     producer.flush()
     producer.close()
@@ -56,14 +54,18 @@ def consume(expected_id: str, timeout_s: int = 15) -> bool:
         auto_offset_reset="earliest",
         enable_auto_commit=True,
         group_id=f"smoke-group-{uuid.uuid4()}",
-        value_deserializer=lambda v: json.loads(v.decode("utf-8")),
         consumer_timeout_ms=timeout_s * 1000,
     )
     deadline = time.time() + timeout_s
     found = False
     for msg in consumer:
-        if msg.value.get("smoke_id") == expected_id:
-            print(f"Consumed: {msg.value}")
+        value = json.loads(msg.value.decode("utf-8"))
+        if value.get("smoke_id") == expected_id:
+            print(f"Consumed: {value}")
+            found = True
+            break
+        if time.time() > deadline:
+            break
             found = True
             break
         if time.time() > deadline:
