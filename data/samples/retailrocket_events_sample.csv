@@ -1,0 +1,7 @@
+visitorid,itemid,event,transactionid,timestamp
+1,100,view,,1433116800000
+1,100,addtocart,,1433116860000
+2,200,view,,1433116920000
+2,200,view,,1433116980000
+3,100,transaction,tx-1,1433117040000
+4,300,view,,1433117100000
