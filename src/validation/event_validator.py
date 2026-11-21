@@ -8,6 +8,10 @@ VALID_EVENT_TYPES = {
     "view",
     "addtocart",
     "transaction",
+    "purchase",
+    "cancellation",
+    "return",
+    "adjustment",
     "order_created",
     "order_item_added",
     "payment_recorded",
@@ -30,12 +34,12 @@ def validate_event(event: CanonicalEvent) -> list[str]:
         errors.append(f"invalid event_type: {event.event_type}")
     if not event.event_time:
         errors.append("missing event_time")
-    if event.source not in {"retailrocket", "olist", "instacart", "synthetic"}:
+    if event.source not in {"retailrocket", "olist", "instacart", "synthetic", "uci_online_retail"}:
         errors.append(f"unknown source: {event.source}")
     if not event.entity_id:
         errors.append("missing entity_id")
     if not event.entity_id.startswith(
-        ("rr:", "olist:", "instacart:", "syn:")
+        ("rr:", "olist:", "instacart:", "syn:", "uci:")
     ):
         errors.append(f"entity_id missing source prefix: {event.entity_id}")
     return errors

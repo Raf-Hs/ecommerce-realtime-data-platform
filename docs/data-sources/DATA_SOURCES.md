@@ -32,17 +32,40 @@ document is the canonical source reference.
 - **Limitations:** no clickstream; `customer_id` is per-order; missing values; duplicate
   zip prefixes; Portuguese category names.
 
-## Source C — Product catalog (decision: UCI Online Retail II as default)
+## Source C — UCI Online Retail II (implemented)
 
-- **Selected: UCI Online Retail II**
-  (https://archive.ics.uci.edu/dataset/502/online+retail+ii): CC BY 4.0, ~525k
-  transaction lines, UK giftware retailer, 2009-12 to 2011-12. Chosen because its
-  license is clearly permissive and reproducible by third parties, which matters
-  more for a portfolio than the richer (but license-unclear) Instacart taxonomy.
+- **URL:** https://archive.ics.uci.edu/dataset/502/online+retail+ii
+- **License:** CC BY 4.0 (verified).
+- **Purpose:** Transactional data from a UK-based online retailer (giftware).
+- **Files:** Excel workbook with two sheets:
+  - `Year 2009-2010` (525,461 rows)
+  - `Year 2010-2011` (541,910 rows)
+  - Combined: ~1.07M rows.
+- **Schema (verified against downloaded file):**
+  - `Invoice` (string): invoice number; prefix "C" denotes cancellation.
+  - `StockCode` (string): product code.
+  - `Description` (string): product name (2,928 missing in 2009-2010 sheet).
+  - `Quantity` (int): units per line; negative for returns.
+  - `InvoiceDate` (datetime): transaction timestamp.
+  - `Price` (float): unit price; 3,687 zero-price rows; some negative.
+  - `Customer ID` (float): customer identifier (107,927 missing in 2009-2010 sheet).
+  - `Country` (string): customer country (40 distinct).
+- **Scale:** 28,816 unique invoices, 4,632 stock codes, 4,383 customers, 40 countries.
+  Quantity range -9,600..19,152; Price range -53,594.36..25,111.10.
+- **Date range:** 2009-12-01 to 2011-12-09.
+- **Adapter:** `src/ingestion/uci_online_retail.py` (UCIOnlineRetailAdapter).
+- **Event types produced:** `purchase`, `cancellation`, `return`, `adjustment`.
+- **Limitations:**
+  - No clickstream or browsing data.
+  - ~20% of rows lack a Customer ID (guest purchases).
+  - Description missing on ~2,928 rows.
+  - Negative quantities and prices require careful handling (returns, adjustments).
+  - UK giftware niche; not representative of all e-commerce.
+  - Timestamps have no timezone (assumed UTC).
 - **Alternative (optional): Instacart Market Basket Analysis**
   (https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis):
-  ~3.4M orders, ~50k products, human-readable taxonomy. License unverified — may
-  be used only after license verification; not the default.
+  ~3.4M orders, ~50k products. License unverified — may be used only after
+  license verification.
 
 ## Source D — Synthetic operational events
 

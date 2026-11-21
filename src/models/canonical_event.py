@@ -16,7 +16,7 @@ from typing import Any
 
 SCHEMA_VERSION = "1.0.0"
 
-VALID_SOURCES = {"retailrocket", "olist", "instacart", "synthetic"}
+VALID_SOURCES = {"retailrocket", "olist", "instacart", "synthetic", "uci_online_retail"}
 
 
 @dataclass(frozen=True)

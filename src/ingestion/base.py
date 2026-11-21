@@ -34,7 +34,7 @@ class BaseAdapter(ABC):
             errors.append("missing event_type")
         if not event.event_time:
             errors.append("missing event_time")
-        if event.source not in {"retailrocket", "olist", "instacart", "synthetic"}:
+        if event.source not in {"retailrocket", "olist", "instacart", "synthetic", "uci_online_retail"}:
             errors.append(f"unknown source: {event.source}")
         if not event.entity_id:
             errors.append("missing entity_id")
