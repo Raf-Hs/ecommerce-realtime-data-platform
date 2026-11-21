@@ -9,6 +9,8 @@ VALID_EVENT_TYPES = {
     "addtocart",
     "transaction",
     "order_created",
+    "order_item_added",
+    "payment_recorded",
     "payment_attempted",
     "payment_failed",
     "inventory_updated",
