@@ -16,7 +16,7 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | Spark streaming | In progress | Spark 4.2 + Delta + Kafka connector validated via smoke test |
 | Data Lakehouse (Delta) | In progress | Spark + Delta validated; Gold aggregation implemented |
 | Azure architecture | Designed (not implemented) | `docs/architecture/ARCHITECTURE.md` |
-| Monitoring | Not started | — |
+| Monitoring | In progress | Structured logging + Spark/Kafka UI; Azure Monitor designed |
 | Documentation | In progress | Multiple docs; visuals pending |
 | Visual assets | In progress | Mermaid diagrams in architecture doc |
 | Testing | In progress | 23 tests passing (unit + integration) |
