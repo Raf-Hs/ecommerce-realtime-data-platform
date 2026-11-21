@@ -38,6 +38,13 @@ the Compose network. Pin image versions. Document resource requirements.
 - Resource limits on WSL2 must be respected; sample data sizes tuned accordingly.
 - Kafka image choice (Confluent vs. Bitnami vs. Apache) to be finalized in Phase 1.
 
+## Implementation (Phase 1)
+
+- Kafka: `apache/kafka:3.9.0` in KRaft mode (no ZooKeeper), single node,
+  internal listener on `kafka:29092`.
+- PostgreSQL: `postgres:16`, host port `5433`.
+- Optional Kafka UI via `docker compose --profile ui`.
+
 ## Trade-offs
 
 - Docker adds a dependency, but removes far larger manual-setup risk.
