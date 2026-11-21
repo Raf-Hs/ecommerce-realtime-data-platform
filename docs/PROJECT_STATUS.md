@@ -10,16 +10,16 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 |---|---|---|
 | Business case | Complete | `docs/business/BUSINESS_CASE.md` |
 | Data source research | Complete | `docs/data-sources/DATA_SOURCES.md`, `docs/PHASE_0_RESEARCH.md` |
-| Source ingestion | Not started | — |
+| Source ingestion | In progress | Retailrocket adapter + synthetic generator implemented and tested |
 | Kafka infrastructure | In progress | Docker Compose running; topics created; smoke test passed |
-| Event validation | Not started | — |
+| Event validation | In progress | src/validation/event_validator.py with 4 passing tests |
 | Spark streaming | Not started | — |
 | Data Lakehouse (Delta) | Designed | `docs/architecture/ARCHITECTURE.md`, ADR-007 |
 | Azure architecture | Designed (not implemented) | `docs/architecture/ARCHITECTURE.md` |
 | Monitoring | Not started | — |
 | Documentation | In progress | Multiple docs; visuals pending |
 | Visual assets | In progress | Mermaid diagrams in architecture doc |
-| Testing | Not started | — |
+| Testing | In progress | 15 unit tests passing |
 | Reliability | Designed | ADR-009, ADR-008 |
 | Project tracking | Complete | This document |
 
@@ -29,7 +29,7 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 |---|---|
 | 0 — Business Research & Architecture | Complete (awaiting approval) |
 | 1 — Local Infrastructure | In progress |
-| 2 — Multi-Source Ingestion | Not started |
+| 2 — Multi-Source Ingestion | In progress |
 | 3 — Kafka & Event Reliability | Not started |
 | 4 — Spark Structured Streaming | Not started |
 | 5 — Data Lake & Business Outputs | Not started |
