@@ -10,8 +10,8 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 |---|---|---|
 | Business case | Complete | `docs/business/BUSINESS_CASE.md` |
 | Data source research | Complete | `docs/data-sources/DATA_SOURCES.md`, `docs/PHASE_0_RESEARCH.md` |
-| Source ingestion | In progress | Retailrocket adapter + synthetic generator implemented and tested |
-| Kafka infrastructure | In progress | Docker Compose running; topics created; smoke test passed |
+| Source ingestion | In progress | Retailrocket + Olist adapters + synthetic generator + replay producer |
+| Kafka infrastructure | In progress | Docker Compose running; 6 topics created; smoke tests passed |
 | Event validation | In progress | src/validation/event_validator.py with 4 passing tests |
 | Spark streaming | Not started | — |
 | Data Lakehouse (Delta) | Designed | `docs/architecture/ARCHITECTURE.md`, ADR-007 |
@@ -19,7 +19,7 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | Monitoring | Not started | — |
 | Documentation | In progress | Multiple docs; visuals pending |
 | Visual assets | In progress | Mermaid diagrams in architecture doc |
-| Testing | In progress | 15 unit tests passing |
+| Testing | In progress | 21 tests passing (unit + integration) |
 | Reliability | Designed | ADR-009, ADR-008 |
 | Project tracking | Complete | This document |
 
