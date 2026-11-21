@@ -11,7 +11,7 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | Business case | Complete | `docs/business/BUSINESS_CASE.md` |
 | Data source research | Complete | `docs/data-sources/DATA_SOURCES.md`, `docs/PHASE_0_RESEARCH.md` |
 | Source ingestion | Not started | — |
-| Kafka infrastructure | Not started | — |
+| Kafka infrastructure | In progress | Docker Compose running; topics created; smoke test passed |
 | Event validation | Not started | — |
 | Spark streaming | Not started | — |
 | Data Lakehouse (Delta) | Designed | `docs/architecture/ARCHITECTURE.md`, ADR-007 |
@@ -28,7 +28,7 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | Phase | Status |
 |---|---|
 | 0 — Business Research & Architecture | Complete (awaiting approval) |
-| 1 — Local Infrastructure | Not started |
+| 1 — Local Infrastructure | In progress |
 | 2 — Multi-Source Ingestion | Not started |
 | 3 — Kafka & Event Reliability | Not started |
 | 4 — Spark Structured Streaming | Not started |

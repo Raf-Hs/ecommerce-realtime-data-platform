@@ -32,15 +32,17 @@ document is the canonical source reference.
 - **Limitations:** no clickstream; `customer_id` is per-order; missing values; duplicate
   zip prefixes; Portuguese category names.
 
-## Source C — Product catalog (chosen at implementation)
+## Source C — Product catalog (decision: UCI Online Retail II as default)
 
-- **Candidate C1 — Instacart Market Basket Analysis**
-  (https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis):
-  ~3.4M orders, ~50k products, human-readable taxonomy. License unverified — must
-  be verified before use.
-- **Candidate C2 — UCI Online Retail II**
+- **Selected: UCI Online Retail II**
   (https://archive.ics.uci.edu/dataset/502/online+retail+ii): CC BY 4.0, ~525k
-  transaction lines. Fallback if Instacart license is unusable.
+  transaction lines, UK giftware retailer, 2009-12 to 2011-12. Chosen because its
+  license is clearly permissive and reproducible by third parties, which matters
+  more for a portfolio than the richer (but license-unclear) Instacart taxonomy.
+- **Alternative (optional): Instacart Market Basket Analysis**
+  (https://www.kaggle.com/datasets/psparks/instacart-market-basket-analysis):
+  ~3.4M orders, ~50k products, human-readable taxonomy. License unverified — may
+  be used only after license verification; not the default.
 
 ## Source D — Synthetic operational events
 
