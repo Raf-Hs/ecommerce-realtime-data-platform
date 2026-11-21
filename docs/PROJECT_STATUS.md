@@ -13,7 +13,7 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | Source ingestion | In progress | Retailrocket + Olist adapters + synthetic generator + replay producer |
 | Kafka infrastructure | In progress | Docker Compose running; 6 topics created; smoke tests passed |
 | Event validation | In progress | src/validation/event_validator.py with 4 passing tests |
-| Spark streaming | Not started | — |
+| Spark streaming | In progress | Spark 4.2 + Delta + Kafka connector validated via smoke test |
 | Data Lakehouse (Delta) | Designed | `docs/architecture/ARCHITECTURE.md`, ADR-007 |
 | Azure architecture | Designed (not implemented) | `docs/architecture/ARCHITECTURE.md` |
 | Monitoring | Not started | — |
@@ -30,8 +30,8 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | 0 — Business Research & Architecture | Complete (awaiting approval) |
 | 1 — Local Infrastructure | In progress |
 | 2 — Multi-Source Ingestion | In progress |
-| 3 — Kafka & Event Reliability | Not started |
-| 4 — Spark Structured Streaming | Not started |
+| 3 — Kafka & Event Reliability | In progress |
+| 4 — Spark Structured Streaming | In progress |
 | 5 — Data Lake & Business Outputs | Not started |
 | 6 — Reliability & Performance | Not started |
 | 7 — Portfolio Delivery | Not started |
