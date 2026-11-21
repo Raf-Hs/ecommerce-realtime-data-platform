@@ -1,0 +1,1 @@
+"""Source package for the E-commerce Real-Time Intelligence platform."""

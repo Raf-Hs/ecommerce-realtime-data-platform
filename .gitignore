@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Environment / secrets
+.env
+*.env.local
+
+# Data
+data/raw/
+data/processed/
+data/samples/
+
+# Spark / checkpoints
+checkpoints/
+*.parquet
+*.delta
+_spark_metadata/
+
+# Docker
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Large generated files
+*.zip
+*.tar.gz
