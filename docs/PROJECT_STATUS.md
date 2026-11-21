@@ -33,5 +33,5 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | 3 — Kafka & Event Reliability | In progress |
 | 4 — Spark Structured Streaming | In progress |
 | 5 — Data Lake & Business Outputs | In progress | Gold product engagement aggregation + Postgres serving |
-| 6 — Reliability & Performance | Not started |
-| 7 — Portfolio Delivery | Not started |
+| 6 — Reliability & Performance | In progress | DLQ routing tested; producer benchmark recorded |
+| 7 — Portfolio Delivery | In progress | README, CI, docs finalized; workflow push pending scope |
