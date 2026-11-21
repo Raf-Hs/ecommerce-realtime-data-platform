@@ -38,6 +38,32 @@ ADLS Gen2, Azure Monitor, Azure Data Factory (batch orchestration only).
 Local-first, free, open source. Azure items are target architecture only — no paid
 resources are created.
 
+## Quick start
+
+```bash
+# 1. Clone and set up Python
+git clone https://github.com/Raf-Hs/ecommerce-realtime-data-platform.git
+cd ecommerce-realtime-data-platform
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+
+# 2. Start infrastructure
+docker compose up -d
+
+# 3. Create Kafka topics
+python scripts/create_topics.py
+
+# 4. Validate connectivity
+python scripts/kafka_smoke_test.py
+python scripts/postgres_smoke_test.py
+
+# 5. Run unit tests
+python -m pytest tests/unit -q
+```
+
+Java 17+ is required for Spark. See `infrastructure/spark/README.md`.
+
 ## Documentation
 
 - [Business case](docs/business/BUSINESS_CASE.md)
