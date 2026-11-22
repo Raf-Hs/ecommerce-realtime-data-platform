@@ -11,6 +11,9 @@ Run:
 from __future__ import annotations
 
 import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, count, when, window, to_timestamp
@@ -30,6 +33,7 @@ def run() -> None:
 
     silver = (
         spark.readStream.format("delta")
+        .option("startingVersion", "0")
         .option("maxFilesPerTrigger", 100)
         .load(SILVER_PATH)
     )
@@ -60,14 +64,22 @@ def run() -> None:
         .alias("view_to_cart_ratio"),
     )
 
-    query = (
+    trigger = os.getenv("SPARK_TRIGGER", "").lower()
+    writer = (
         gold.writeStream.format("delta")
         .outputMode("append")
         .option("checkpointLocation", os.path.join(CHECKPOINT_PATH, "gold"))
-        .start(GOLD_PATH)
     )
+    if trigger == "once":
+        writer = writer.trigger(once=True)
+    elif trigger == "availablenow":
+        writer = writer.trigger(availableNow=True)
+    query = writer.start(GOLD_PATH)
 
-    spark.streams.awaitAnyTermination()
+    if trigger in ("once", "availablenow"):
+        query.awaitTermination()
+    else:
+        spark.streams.awaitAnyTermination()
 
 
 if __name__ == "__main__":

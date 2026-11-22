@@ -38,6 +38,15 @@ ADLS Gen2, Azure Monitor, Azure Data Factory (batch orchestration only).
 Local-first, free, open source. Azure items are target architecture only — no paid
 resources are created.
 
+## Validation
+
+End-to-end streaming validation passed:
+- Bronze: 241 rows (raw Kafka events)
+- Silver: 81 rows (deduplicated canonical events)
+- Gold: 5 rows (product engagement per product)
+
+Run: `python scripts/e2e_streaming_test.py`
+
 ## Quick start
 
 ```bash

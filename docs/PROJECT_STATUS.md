@@ -22,6 +22,7 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | Testing | In progress | 23 tests passing (unit + integration) |
 | Reliability | Designed | ADR-009, ADR-008 |
 | Project tracking | Complete | This document |
+| E2E streaming validation | Complete | `docs/E2E_VALIDATION.md`, `scripts/e2e_streaming_test.py` |
 
 ## Phase progress
 
@@ -32,6 +33,6 @@ support that status. Status values: `Not started`, `In progress`, `Complete`.
 | 2 — Multi-Source Ingestion | In progress |
 | 3 — Kafka & Event Reliability | In progress |
 | 4 — Spark Structured Streaming | In progress |
-| 5 — Data Lake & Business Outputs | In progress | Gold product engagement aggregation + Postgres serving |
-| 6 — Reliability & Performance | In progress | DLQ routing tested; producer benchmark recorded |
-| 7 — Portfolio Delivery | In progress | README, CI, docs finalized; workflow push pending scope |
+| 5 — Data Lake & Business Outputs | Complete | E2E streaming validated: Bronze 241, Silver 81, Gold 5 rows |
+| 6 — Reliability & Performance | Complete | DLQ routing, dedup, late events tested; benchmark recorded |
+| 7 — Portfolio Delivery | Complete | README, CI, docs, E2E validation finalized |

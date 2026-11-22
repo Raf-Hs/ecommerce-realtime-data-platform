@@ -127,35 +127,50 @@ def run() -> None:
     valid = is_valid(parsed)
     timed = with_event_time(valid)
 
-    # Bronze: raw parsed events (append).
-    bronze_query = (
+    trigger = os.getenv("SPARK_TRIGGER", "").lower()
+    bronze_writer = (
         parsed.writeStream.format("delta")
         .outputMode("append")
         .option("checkpointLocation", os.path.join(CHECKPOINT_PATH, "bronze"))
-        .start(BRONZE_PATH)
     )
+    if trigger == "once":
+        bronze_writer = bronze_writer.trigger(once=True)
+    elif trigger == "availablenow":
+        bronze_writer = bronze_writer.trigger(availableNow=True)
+    bronze_query = bronze_writer.start(BRONZE_PATH)
 
     # Silver: validated, deduplicated by event_id with watermark.
     silver_df = (
         timed.withWatermark("event_ts", WATERMARK)
         .dropDuplicates(["event_id"])
     )
-    silver_query = (
+    silver_writer = (
         silver_df.writeStream.format("delta")
         .outputMode("append")
         .option("checkpointLocation", os.path.join(CHECKPOINT_PATH, "silver"))
-        .start(SILVER_PATH)
     )
+    if trigger == "once":
+        silver_writer = silver_writer.trigger(once=True)
+    elif trigger == "availablenow":
+        silver_writer = silver_writer.trigger(availableNow=True)
+    silver_query = silver_writer.start(SILVER_PATH)
 
     # Console sink for visibility.
-    console_query = (
+    console_writer = (
         timed.writeStream.outputMode("append")
         .format("console")
         .option("truncate", "false")
-        .start()
     )
+    if trigger in ("once", "availablenow"):
+        console_writer = console_writer.trigger(once=True) if trigger == "once" else console_writer.trigger(availableNow=True)
+    console_query = console_writer.start()
 
-    spark.streams.awaitAnyTermination()
+    if trigger in ("once", "availablenow"):
+        console_query.awaitTermination()
+        bronze_query.awaitTermination()
+        silver_query.awaitTermination()
+    else:
+        spark.streams.awaitAnyTermination()
 
 
 if __name__ == "__main__":
