@@ -16,6 +16,7 @@ env/
 # Data
 data/raw/
 data/processed/
+data/e2e/
 # Keep small test samples committed; large generated files are excluded above.
 
 # Spark / checkpoints
