@@ -39,4 +39,22 @@ Description missing on 2,928 rows; Customer ID missing on 107,927 rows.
 
 ![Test results](assets/test_results.png)
 
-23 tests (unit + integration + reliability), all passing.
+31 tests (unit + integration + reliability), all passing.
+
+### E2E pipeline row counts
+
+![Pipeline flow](assets/insight_pipeline_flow.png)
+
+Verified from E2E run: 241 raw events → 241 Bronze → 81 Silver (deduped) → 5 Gold (aggregated).
+
+### Retailrocket event distribution
+
+![Retailrocket events](assets/insight_retailrocket_events.png)
+
+Published figures from the Retailrocket dataset page (verified).
+
+### Data quality summary
+
+![Data quality](assets/insight_data_quality.png)
+
+E2E run: 81 valid events, 160 duplicate candidates removed during deduplication.
