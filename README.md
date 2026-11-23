@@ -238,6 +238,16 @@ Java 17+ is required for Spark. See `infrastructure/spark/README.md`.
 
 ---
 
+## Visual evidence
+
+| Chart | Description |
+|---|---|
+| [Pipeline flow](docs/assets/insight_pipeline_flow.png) | E2E row counts: 241 raw → 241 Bronze → 81 Silver → 5 Gold |
+| [Event distribution](docs/assets/insight_retailrocket_events.png) | Retailrocket event types (published figures) |
+| [Data quality](docs/assets/insight_data_quality.png) | Valid vs. deduplicated events (E2E run) |
+| [Throughput](docs/assets/benchmark_producer_throughput.png) | Producer throughput: 1,283 events/sec |
+| [Test results](docs/assets/test_results.png) | 31 tests, all passing |
+
 ## Limitations
 
 - Single-node execution; not representative of production scale.
