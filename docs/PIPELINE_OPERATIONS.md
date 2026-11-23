@@ -32,6 +32,14 @@ spark-submit --packages org.apache.spark:spark-sql-kafka-0-10_2.13:4.2.0,io.delt
 python scripts/run_gold_aggregation.py
 ```
 
+## End-to-end validation
+
+```bash
+python scripts/e2e_streaming_test.py
+```
+
+Expected: Bronze, Silver, and Gold rows printed; "E2E STREAMING VALIDATION PASSED".
+
 ## Stop
 
 ```bash

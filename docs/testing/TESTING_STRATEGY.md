@@ -20,8 +20,17 @@ datasets). Replay speed set to "as fast as possible" in tests.
 
 ## 3. CI
 
-GitHub Actions: lint (ruff), type check (mypy optional), pytest. Added in Phase 7.
+GitHub Actions workflow at `.github/workflows/ci.yml` runs unit tests on push/PR.
 
-## 4. Status
+## 4. Test inventory (actual)
 
-Designed (not implemented). First tests in Phase 2 (ingestion).
+- **Unit tests (15):** event ID determinism, Retailrocket adapter, Olist adapter,
+  UCI adapter, event validator, synthetic generator, replay producer.
+- **Integration tests (8):** Kafka round-trip, DLQ routing, Gold aggregation,
+  Spark smoke, E2E streaming.
+- **Reliability tests (2):** dedup by event_id, late-arriving events.
+- **Total: 31 tests, all passing.**
+
+## 5. Status
+
+Implemented. 31 tests passing. CI workflow committed (push requires `workflow` scope).

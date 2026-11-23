@@ -1,6 +1,7 @@
 # E-commerce Real-Time Intelligence & Event Streaming Platform
 
-> Status: **Phase 0 — Research & Architecture (in progress).** No application code yet.
+> Status: **Implementation complete through Milestone 3 (E2E streaming validated).**
+> 31 automated tests passing. GitHub synchronized.
 
 ## Overview
 
@@ -9,10 +10,10 @@ independent systems (clickstream, transactions, catalog, inventory) and its repo
 is batch-only, so it cannot see customer behavior or operational changes in time.
 
 This project builds a **local, reproducible, event-driven data platform** that
-integrates multiple independent sources through Apache Kafka, processes them with
-Apache Spark Structured Streaming, enforces data quality, persists a three-layer
-(Bronze/Silver/Gold) Parquet Data Lake, and serves business-ready metrics through
-PostgreSQL.
+integrates multiple independent sources (Retailrocket, Olist, UCI Online Retail II,
+synthetic) through Apache Kafka, processes them with Apache Spark Structured
+Streaming, enforces data quality, persists a three-layer (Bronze/Silver/Gold)
+Delta Lake, and serves business-ready metrics through PostgreSQL.
 
 ## Data sources
 
@@ -20,14 +21,13 @@ PostgreSQL.
    properties + category tree.
 2. **Olist Brazilian E-commerce Dataset** (CC BY-NC-SA 4.0) — transactions,
    payments, logistics, reviews, sellers.
-3. **Instacart Market Basket Analysis** (license to verify) — product catalog
-   enrichment; fallback: UCI Online Retail II (CC BY 4.0).
+3. **UCI Online Retail II** (CC BY 4.0) — UK retail transactions, product catalog.
 4. **Synthetic operational events** — inventory, checkout, payment, price changes
    (explicitly labeled, never presented as real).
 
 Retailrocket and Olist are independent datasets. Their identifiers are never joined.
 
-## Tech stack (planned)
+## Tech stack
 
 **Local implementation:** Python, SQL, PostgreSQL, Apache Kafka, Apache Spark /
 PySpark, Delta Lake, Docker Compose, pytest, GitHub Actions.
@@ -77,12 +77,22 @@ Java 17+ is required for Spark. See `infrastructure/spark/README.md`.
 
 - [Business case](docs/business/BUSINESS_CASE.md)
 - [Data sources](docs/data-sources/DATA_SOURCES.md)
+- [Data dictionary](docs/data-dictionary/DATA_DICTIONARY.md)
+- [Event catalog](docs/event-schemas/EVENT_CATALOG.md)
 - [Architecture](docs/architecture/ARCHITECTURE.md)
+- [Azure alignment](docs/architecture/AZURE_ALIGNMENT.md)
 - [Phase 0 research](docs/PHASE_0_RESEARCH.md)
 - [Engineering gap analysis](docs/ENGINEERING_GAP_ANALYSIS.md)
+- [Implementation inventory](docs/IMPLEMENTATION_INVENTORY.md)
 - [Project status](docs/PROJECT_STATUS.md)
 - [Data quality](docs/data-quality/DATA_QUALITY.md)
 - [Testing strategy](docs/testing/TESTING_STRATEGY.md)
+- [Monitoring](docs/MONITORING.md)
+- [E2E validation](docs/E2E_VALIDATION.md)
+- [Pipeline operations](docs/PIPELINE_OPERATIONS.md)
+- [Failure recovery](docs/FAILURE_RECOVERY.md)
+- [Limitations](docs/LIMITATIONS.md)
+- [Performance benchmarks](docs/benchmarks/PERFORMANCE_BENCHMARKS.md)
 - [Contributing](docs/CONTRIBUTING.md)
 - [Decisions (ADRs)](docs/decisions/)
 
@@ -93,4 +103,5 @@ licenses; see `docs/data-sources/DATA_SOURCES.md`.
 
 ## Status
 
-Phase 0 complete. Awaiting approval before implementation.
+Implementation complete through Milestone 3. E2E streaming validated.
+31 automated tests passing. See `docs/PROJECT_STATUS.md`.
